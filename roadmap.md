@@ -107,18 +107,18 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 ## 📌 FAZ 5: Çalışma Modu ve Oyunlaştırma Deneyimi
 
 ### 5.1. Çalışma Ekranı Konsepti (`/calis/[categoryId]`)
-- [ ] Sadece soru ve cevaba odaklanan, dikkat dağıtmayan minimalist arayüzü kodla.
-- [ ] Üst tarafta mevcut seans ilerleme barını göster.
+- [x] Sadece soru ve cevaba odaklanan, dikkat dağıtmayan minimalist arayüzü kodla.
+- [x] Üst tarafta mevcut seans ilerleme barını göster.
 
 ### 5.2. Bilgi Kartı Bileşeni (`Card.tsx`)
-- [ ] Kartın ön yüzünde soruyu, arka yüzünde cevabı göster.
-- [ ] CSS 3D transform ve `backface-visibility: hidden` kullanarak akıcı bir 3D kart dönme (flip) animasyonu hazırla.
-- [ ] Kart çevrildiğinde altta belirecek "Zor" ve "Kolay" butonlarını ekle.
+- [x] Kartın ön yüzünde soruyu, arka yüzünde cevabı göster.
+- [x] CSS 3D transform ve `backface-visibility: hidden` kullanarak akıcı bir 3D kart dönme (flip) animasyonu hazırla.
+- [x] Kart çevrildiğinde altta belirecek "Zor" ve "Kolay" butonlarını ekle.
 
 ### 5.3. Dopamin Parçacık Sistemi (`Particles.tsx`)
-- [ ] HTML5 Canvas kullanan `Particles.tsx` bileşenini yaz.
-- [ ] Kullanıcı "Kolay" butonuna tıkladığında mor ve yeşil parıltılı parçacıkları ekrana fırlat.
-- [ ] Deste başarıyla bittiğinde tam ekran konfeti yağmuru tetikle.
+- [x] HTML5 Canvas kullanan `Particles.tsx` bileşenini yaz.
+- [x] Kullanıcı "Kolay" butonuna tıkladığında mor ve yeşil parıltılı parçacıkları ekrana fırlat.
+- [x] Deste başarıyla bittiğinde tam ekran konfeti yağmuru tetikle.
 
 ---
 
