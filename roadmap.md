@@ -129,7 +129,7 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 - [x] Start aşamasında `prisma db push` komutunun otomatik çalışmasını sağlayan bir entrypoint veya start komutu ekle.
 
 ### 6.2. Coolify Konfigürasyonu
-- [ ] Projeyi GitHub'a commit et ve pushla.
+- [x] Projeyi GitHub'a commit et ve pushla.
 - [ ] Coolify panelinde GitHub reposunu bağla.
 - [ ] Coolify üzerinde bir PostgreSQL veritabanı servisi oluştur ve bunu uygulamanın `DATABASE_URL` değişkenine bağla.
 - [ ] Çevre değişkenlerini (`NEXTAUTH_SECRET`, `ADMIN_PASSWORD`) Coolify üzerinde tanımla.
