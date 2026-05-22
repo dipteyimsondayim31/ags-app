@@ -13,7 +13,7 @@ const prisma = new PrismaClient({ adapter });
 
 async function main() {
   const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
-  const hashedPassword = bcrypt.hashSync(adminPassword, 10);
+  const hashedPassword = bcrypt.hashSync(adminPassword, 12);
 
   // Admin kullanıcısını ekle veya güncelle
   const admin = await prisma.user.upsert({

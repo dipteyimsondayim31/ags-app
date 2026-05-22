@@ -35,10 +35,10 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 ## 📌 FAZ 2: Güvenlik Altyapısının Kurulması & Siber Güvenlik Sıkılaştırması (OWASP Önlemleri)
 
 ### 2.1. Kimlik Doğrulama ve Session Güvenliği (Auth.js v5)
-- [ ] `next-auth` paketini projeye dahil et.
-- [ ] Credentials Provider kullanarak şifre tabanlı kimlik doğrulama akışını `src/auth.ts` içinde yapılandır.
-- [ ] Şifre doğrulamaları için **Argon2id** veya en az 12 tur (salt rounds) ile yapılandırılmış **Bcrypt** kütüphanesini kullan.
-- [ ] JWT oturum çerezlerini `httpOnly: true`, `secure: true` (yalnızca HTTPS) ve `sameSite: "strict"` (CSRF koruması) parametreleriyle kilitle.
+- [x] `next-auth` paketini projeye dahil et.
+- [x] Credentials Provider kullanarak şifre tabanlı kimlik doğrulama akışını `src/auth.ts` içinde yapılandır.
+- [x] Şifre doğrulamaları için **Argon2id** veya en az 12 tur (salt rounds) ile yapılandırılmış **Bcrypt** kütüphanesini kullan.
+- [x] JWT oturum çerezlerini `httpOnly: true`, `secure: true` (yalnızca HTTPS) ve `sameSite: "strict"` (CSRF koruması) parametreleriyle kilitle.
 
 ### 2.2. SQL Injection (SQLi) Önleme Kuralları
 - [ ] Prisma ORM sorgularının tamamında parametrik sorgu (prepared statements) standartlarını koru.
