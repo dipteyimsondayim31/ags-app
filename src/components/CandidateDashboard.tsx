@@ -37,14 +37,34 @@ export function CandidateDashboard({ categories, cards }: CandidateDashboardProp
 
   // Sync on mount
   useEffect(() => {
-    ProgressManager.updateStreak();
-    ProgressManager.pruneObsoleteCards(cards.map((c) => c.id));
-    ProgressManager.resetDailySecondsIfNewDay();
+    try {
+      ProgressManager.updateStreak();
+      if (cards) {
+        ProgressManager.pruneObsoleteCards(cards.map((c) => c.id));
+      }
+      ProgressManager.resetDailySecondsIfNewDay();
+    } catch (err) {
+      console.error("Error running ProgressManager lifecycle methods:", err);
+    }
     
     let active = true;
     const timer = setTimeout(() => {
       if (active) {
-        setLocalState(ProgressManager.getState());
+        try {
+          setLocalState(ProgressManager.getState());
+        } catch (err) {
+          console.error("Failed to load state from ProgressManager:", err);
+          // Safe fallback state matching CandidateState
+          setLocalState({
+            xp: 0,
+            level: 1,
+            streak: 12,
+            lastActive: new Date().toISOString().split("T")[0],
+            learnedCardIds: [],
+            reviewCardIds: [],
+            studySecondsToday: 0,
+          });
+        }
       }
     }, 0);
     
