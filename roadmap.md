@@ -32,23 +32,39 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
   * Test admin kullanıcısını (şifresi hash'lenmiş olarak) oluştur.
 - [ ] Yerel veritabanını ayağa kaldır, tabloları oluştur ve verileri yerleştir (`docker-compose up -d`, `npx prisma db push`, `npx prisma db seed`).
 
----
+## 📌 FAZ 2: Güvenlik Altyapısının Kurulması & Siber Güvenlik Sıkılaştırması (OWASP Önlemleri)
 
-## 📌 FAZ 2: Güvenlik Altyapısının Kurulması (NextAuth & Protection)
-
-### 2.1. Kimlik Doğrulama (Auth.js v5) Entegrasyonu
+### 2.1. Kimlik Doğrulama ve Session Güvenliği (Auth.js v5)
 - [ ] `next-auth` paketini projeye dahil et.
 - [ ] Credentials Provider kullanarak şifre tabanlı kimlik doğrulama akışını `src/auth.ts` içinde yapılandır.
-- [ ] Şifre doğrulamaları için `bcryptjs` veya `argon2` kütüphanesini kullan.
+- [ ] Şifre doğrulamaları için **Argon2id** veya en az 12 tur (salt rounds) ile yapılandırılmış **Bcrypt** kütüphanesini kullan.
+- [ ] JWT oturum çerezlerini `httpOnly: true`, `secure: true` (yalnızca HTTPS) ve `sameSite: "strict"` (CSRF koruması) parametreleriyle kilitle.
 
-### 2.2. Middleware ve Rota Koruması
-- [ ] `src/middleware.ts` dosyasını oluştur.
-- [ ] `/admin` altındaki tüm sayfaları (giriş sayfası `/admin/giris` hariç) koruma altına al. Giriş yapmamış kullanıcıları `/admin/giris` sayfasına yönlendir.
+### 2.2. SQL Injection (SQLi) Önleme Kuralları
+- [ ] Prisma ORM sorgularının tamamında parametrik sorgu (prepared statements) standartlarını koru.
+- [ ] Projede ham sorgu (`prisma.$queryRaw`) kullanımını kesinlikle yasakla. Tüm veri tabanı işlemlerini Prisma Client API metotları ile yap.
+- [ ] Eğer ham SQL sorgusu zorunlu olursa, kesinlikle string birleştirme (concatenation) yapma; Prisma'nın `sql` şablon etiketlerini kullanarak parametrik hale getir.
 
-### 2.3. Rate Limiting ve API Güvenliği
+### 2.3. Cross-Site Scripting (XSS) Önleme Kuralları
+- [ ] JSX içindeki tüm dinamik çıktıların React tarafından otomatik escape edildiğinden emin ol.
+- [ ] Uygulama genelinde `dangerouslySetInnerHTML` kullanımını yasakla. Kullanılması zorunlu olan yerlerde girdiyi kesinlikle `isomorphic-dompurify` ile sanitize et.
+- [ ] `next.config.js` dosyasına sıkı bir Content Security Policy (CSP) ekle: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';`
+
+### 2.4. CSRF ve CORS Yapılandırması
+- [ ] Next.js Server Actions yerleşik `Origin` header kontrolünü aktif tut.
+- [ ] Dışarıya açık API uç noktalarında yalnızca yetkilendirilmiş kökenlere (origin) izin ver, `Access-Control-Allow-Origin: *` kullanımından kaçın.
+
+### 2.5. Rate Limiting (Kaba Kuvvet ve DoS Saldırısı Koruması)
 - [ ] IP bazlı çalışan ve bellek (in-memory) üzerinde istek sayan `/src/lib/rate-limit.ts` mekanizmasını kodla.
-- [ ] Giriş API rotasına (veya server action'a) ardışık denemelerde `429 Too Many Requests` döndüren bu limitleyiciyi entegre et.
-- [ ] `next.config.js` dosyasına Content Security Policy (CSP), HSTS, XSS Protection başlıklarını ekle.
+- [ ] Giriş API rotasına (veya server action'a) ardışık başarısız denemelerde `429 Too Many Requests` döndüren bu limitleyiciyi entegre et.
+
+### 2.6. Hassas Veri ve Hata Yönetimi
+- [ ] Sunucu taraflı hataların stack trace (hata izi) bilgilerini istemciye (client) asla sızdırma. Hataları kullanıcıya jenerik mesajlarla (örn: "Bir hata oluştu") göster, teknik detayları sunucu loglarında tut.
+- [ ] `.env` ve hassas yapılandırma dosyalarını `.gitignore` içerisine ekle, GitHub'a sızmasını engelle.
+
+### 2.7. Rota Yetkilendirmesi (Broken Function Level Authorization)
+- [ ] `src/middleware.ts` dosyasını oluştur.
+- [ ] `/admin` altındaki tüm rotaları (giriş sayfası hariç) koruma altına al ve session'ı sunucu tarafında doğrulamadan hiçbir admin action'ının çalışmasına izin verme.
 
 ---
 
