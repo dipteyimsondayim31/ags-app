@@ -29,6 +29,7 @@ ENV HOSTNAME="0.0.0.0"
 # Copy build artifacts and runtime necessities
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/src/generated ./src/generated
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
