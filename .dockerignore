@@ -14,7 +14,6 @@ yarn-error.log*
 .dockerignore
 Dockerfile
 docker-compose.yml
-docker-entrypoint.sh
 roadmap.md
 project_rules.md
 project_skills.md
