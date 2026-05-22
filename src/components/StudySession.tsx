@@ -72,7 +72,6 @@ export function StudySession({ category, initialCards }: StudySessionProps) {
   }
 
   const currentCard = sessionCards[currentIndex];
-  const totalInSession = sessionCards.length;
   // Progress is measured by how many cards we've completely finished relative to initial cards
   const progressPercentage = Math.min(
     (currentIndex / initialCards.length) * 100,
