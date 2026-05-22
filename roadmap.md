@@ -14,10 +14,10 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 ## 📌 FAZ 1: Temel Kurulum ve Çevre Yapılandırması
 
 ### 1.1. Next.js & TailwindCSS Kurulumu
-- [ ] `./` dizininde Next.js projesini TypeScript ve TailwindCSS destekli olacak şekilde kur.
-- [ ] Gereksiz şablon dosyalarını (`app/page.tsx` içindeki varsayılan Next.js içeriklerini, default CSS kurallarını) temizle.
-- [ ] Geist veya Outfit fontunu Google Fonts ya da `next/font` üzerinden sisteme entegre et.
-- [ ] Obsidian Dark renk paletini (`#090a0f` arka plan, `#12131a` kart rengi, `#a78bfa` neon mor aksanı) Tailwind custom theme olarak ekle.
+- [x] `./` dizininde Next.js projesini TypeScript ve TailwindCSS destekli olacak şekilde kur.
+- [x] Gereksiz şablon dosyalarını (`app/page.tsx` içindeki varsayılan Next.js içeriklerini, default CSS kurallarını) temizle.
+- [x] Geist veya Outfit fontunu Google Fonts ya da `next/font` üzerinden sisteme entegre et.
+- [x] Obsidian Dark renk paletini (`#090a0f` arka plan, `#12131a` kart rengi, `#a78bfa` neon mor aksanı) Tailwind custom theme olarak ekle.
 
 ### 1.2. PostgreSQL Yerel Geliştirme Altyapısı
 - [ ] Proje kök dizinine yerel PostgreSQL ayağa kaldıran `docker-compose.yml` dosyasını ekle.
