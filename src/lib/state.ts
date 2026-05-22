@@ -122,7 +122,7 @@ export class ProgressManager {
     }
   }
 
-  static markCardAsLearned(cardId: string): { newXp: number; leveledUp: boolean } {
+  static markCardAsLearned(cardId: string): { leveledUp: boolean; newLevel: number; newXp: number } {
     const state = this.getState();
 
     // Remove from review if it was there
@@ -138,7 +138,7 @@ export class ProgressManager {
     return this.addXp(10);
   }
 
-  static markCardForReview(cardId: string): { newXp: number; leveledUp: boolean } {
+  static markCardForReview(cardId: string): { leveledUp: boolean; newLevel: number; newXp: number } {
     const state = this.getState();
 
     // Remove from learned if it was there
