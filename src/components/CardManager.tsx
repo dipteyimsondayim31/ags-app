@@ -28,7 +28,7 @@ export function CardManager({ initialCards, categories }: CardManagerProps) {
   const [isPending, startTransition] = useTransition();
 
   // Create & Edit form actions
-  const [createError, createAction] = useActionState(async (state: any, formData: FormData) => {
+  const [createError, createAction] = useActionState(async (state: string | null, formData: FormData) => {
     const res = await createCard(state, formData);
     if (res.success) {
       (document.getElementById("create-card-form") as HTMLFormElement)?.reset();
@@ -36,7 +36,7 @@ export function CardManager({ initialCards, categories }: CardManagerProps) {
     return res.error;
   }, null);
 
-  const [editError, editAction] = useActionState(async (state: any, formData: FormData) => {
+  const [editError, editAction] = useActionState(async (state: string | null, formData: FormData) => {
     if (!editingCard) return "Kart seçilmedi.";
     const res = await updateCard(editingCard.id, state, formData);
     if (res.success) {

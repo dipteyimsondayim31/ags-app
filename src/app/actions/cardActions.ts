@@ -19,7 +19,7 @@ async function checkAdminAuth() {
   }
 }
 
-export async function createCard(prevState: any, formData: FormData) {
+export async function createCard(prevState: unknown, formData: FormData) {
   try {
     await checkAdminAuth();
 
@@ -56,16 +56,16 @@ export async function createCard(prevState: any, formData: FormData) {
     revalidatePath("/admin");
     revalidatePath("/");
     return { success: true, error: null };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error creating card:", err);
-    if (err.message === "Unauthorized") {
+    if (err instanceof Error && err.message === "Unauthorized") {
       return { success: false, error: "Bu işlem için yetkiniz bulunmamaktadır." };
     }
     return { success: false, error: "Bilgi kartı oluşturulurken bir hata oluştu." };
   }
 }
 
-export async function updateCard(id: string, prevState: any, formData: FormData) {
+export async function updateCard(id: string, prevState: unknown, formData: FormData) {
   try {
     await checkAdminAuth();
 
@@ -103,9 +103,9 @@ export async function updateCard(id: string, prevState: any, formData: FormData)
     revalidatePath("/admin");
     revalidatePath("/");
     return { success: true, error: null };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error updating card:", err);
-    if (err.message === "Unauthorized") {
+    if (err instanceof Error && err.message === "Unauthorized") {
       return { success: false, error: "Bu işlem için yetkiniz bulunmamaktadır." };
     }
     return { success: false, error: "Bilgi kartı güncellenirken bir hata oluştu." };
@@ -123,9 +123,9 @@ export async function deleteCard(id: string) {
     revalidatePath("/admin");
     revalidatePath("/");
     return { success: true, error: null };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error deleting card:", err);
-    if (err.message === "Unauthorized") {
+    if (err instanceof Error && err.message === "Unauthorized") {
       return { success: false, error: "Bu işlem için yetkiniz bulunmamaktadır." };
     }
     return { success: false, error: "Bilgi kartı silinirken bir hata oluştu." };

@@ -22,7 +22,7 @@ export function CategoryManager({ initialCategories }: CategoryManagerProps) {
   const [isPending, startTransition] = useTransition();
 
   // Create & Edit form state handlers
-  const [createError, createAction] = useActionState(async (state: any, formData: FormData) => {
+  const [createError, createAction] = useActionState(async (state: string | null, formData: FormData) => {
     const res = await createCategory(state, formData);
     if (res.success) {
       // Clear inputs manually if needed or reset form
@@ -31,7 +31,7 @@ export function CategoryManager({ initialCategories }: CategoryManagerProps) {
     return res.error;
   }, null);
 
-  const [editError, editAction] = useActionState(async (state: any, formData: FormData) => {
+  const [editError, editAction] = useActionState(async (state: string | null, formData: FormData) => {
     if (!editingCategory) return "Kategori seçilmedi.";
     const res = await updateCategory(editingCategory.id, state, formData);
     if (res.success) {

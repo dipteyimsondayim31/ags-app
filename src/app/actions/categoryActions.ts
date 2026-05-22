@@ -19,7 +19,7 @@ async function checkAdminAuth() {
   }
 }
 
-export async function createCategory(prevState: any, formData: FormData) {
+export async function createCategory(prevState: unknown, formData: FormData) {
   try {
     await checkAdminAuth();
 
@@ -53,20 +53,20 @@ export async function createCategory(prevState: any, formData: FormData) {
     revalidatePath("/admin");
     revalidatePath("/");
     return { success: true, error: null };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error creating category:", err);
-    if (err.message === "Unauthorized") {
+    if (err instanceof Error && err.message === "Unauthorized") {
       return { success: false, error: "Bu işlem için yetkiniz bulunmamaktadır." };
     }
     // Prisma benzersiz alan hatası kontrolü (P2002)
-    if (err.code === "P2002") {
+    if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
       return { success: false, error: "Bu isimde bir kategori zaten mevcut." };
     }
     return { success: false, error: "Kategori oluşturulurken bir hata oluştu." };
   }
 }
 
-export async function updateCategory(id: string, prevState: any, formData: FormData) {
+export async function updateCategory(id: string, prevState: unknown, formData: FormData) {
   try {
     await checkAdminAuth();
 
@@ -101,12 +101,12 @@ export async function updateCategory(id: string, prevState: any, formData: FormD
     revalidatePath("/admin");
     revalidatePath("/");
     return { success: true, error: null };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error updating category:", err);
-    if (err.message === "Unauthorized") {
+    if (err instanceof Error && err.message === "Unauthorized") {
       return { success: false, error: "Bu işlem için yetkiniz bulunmamaktadır." };
     }
-    if (err.code === "P2002") {
+    if (err && typeof err === "object" && "code" in err && err.code === "P2002") {
       return { success: false, error: "Bu isimde bir kategori zaten mevcut." };
     }
     return { success: false, error: "Kategori güncellenirken bir hata oluştu." };
@@ -124,9 +124,9 @@ export async function deleteCategory(id: string) {
     revalidatePath("/admin");
     revalidatePath("/");
     return { success: true, error: null };
-  } catch (err: any) {
+  } catch (err) {
     console.error("Error deleting category:", err);
-    if (err.message === "Unauthorized") {
+    if (err instanceof Error && err.message === "Unauthorized") {
       return { success: false, error: "Bu işlem için yetkiniz bulunmamaktadır." };
     }
     return { success: false, error: "Kategori silinirken bir hata oluştu." };
