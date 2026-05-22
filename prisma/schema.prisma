@@ -1,0 +1,40 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/client"
+}
+
+// Admin Kullanıcı Modeli
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // Hashed şifre
+  role      String   @default("ADMIN")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Konu Kategorileri (Örn: Türkçe, Mevzuat, Tarih vb.)
+model Category {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  icon        String?  // Kategori simgesi (emoji veya lucide-react ikon adı)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  cards       Card[]
+}
+
+// Bilgi Kartları
+model Card {
+  id         String   @id @default(cuid())
+  question   String   // Soru
+  answer     String   // Cevap
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

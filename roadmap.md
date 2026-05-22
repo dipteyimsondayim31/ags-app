@@ -24,13 +24,13 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 - [x] `.env.example` dosyasında veritabanı bağlantı şablonunu tanımla.
 
 ### 1.3. Prisma ORM ve Veritabanı Kurulumu
-- [ ] Prisma paketlerini kur ve `postgresql` provider'lı `prisma/schema.prisma` şemasını oluştur.
-- [ ] `Category`, `Card` ve `User` (Admin) modellerini tanımla.
-- [ ] `prisma/seed.ts` dosyasını oluştur:
+- [x] Prisma paketlerini kur ve `postgresql` provider'lı `prisma/schema.prisma` şemasını oluştur.
+- [x] `Category`, `Card` ve `User` (Admin) modellerini tanımla.
+- [x] `prisma/seed.ts` dosyasını oluştur:
   * 2 test kategorisi (Türkçe, Mevzuat) ekle.
   * 2 test bilgi kartı ekle.
   * Test admin kullanıcısını (şifresi hash'lenmiş olarak) oluştur.
-- [ ] Yerel veritabanını ayağa kaldır, tabloları oluştur ve verileri yerleştir (`docker-compose up -d`, `npx prisma db push`, `npx prisma db seed`).
+- [x] Yerel veritabanını ayağa kaldır, tabloları oluştur ve verileri yerleştir (`docker-compose up -d`, `npx prisma db push`, `npx prisma db seed`).
 
 ## 📌 FAZ 2: Güvenlik Altyapısının Kurulması & Siber Güvenlik Sıkılaştırması (OWASP Önlemleri)
 
