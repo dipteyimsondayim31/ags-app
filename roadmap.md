@@ -125,8 +125,8 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 ## 📌 FAZ 6: Dağıtım (Deployment) ve Canlıya Alma
 
 ### 6.1. Docker Yapılandırması
-- [ ] Projenin root dizinine multi-stage derleme yapan `Dockerfile` ekle.
-- [ ] Start aşamasında `prisma db push` komutunun otomatik çalışmasını sağlayan bir entrypoint veya start komutu ekle.
+- [x] Projenin root dizinine multi-stage derleme yapan `Dockerfile` ekle.
+- [x] Start aşamasında `prisma db push` komutunun otomatik çalışmasını sağlayan bir entrypoint veya start komutu ekle.
 
 ### 6.2. Coolify Konfigürasyonu
 - [ ] Projeyi GitHub'a commit et ve pushla.
