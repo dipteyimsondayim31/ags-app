@@ -34,3 +34,4 @@ Bu dosya, projenin geliştirilmesi sırasında uyulması gereken teknik ve mimar
 ## 5. Veritabanı (Prisma) Kuralları
 *   İlişkili tablolar silinirken veri bütünlüğü için `onDelete: Cascade` kullanılmalıdır.
 *   Sema değişikliklerinden sonra `npx prisma generate` ve `npx prisma db push` (veya migrate) çalıştırılmalıdır.
+*   **SQL Injection (SQLi) Önleme:** Projede kontrolsüz ham sorgu (`prisma.$queryRaw`, `prisma.$executeRaw`) kullanımı kesinlikle yasaktır; tüm veri tabanı işlemleri Prisma Client API metotlarıyla parametrik ve güvenli bir şekilde yapılmalıdır. Ham SQL sorgusunun zorunlu olduğu istisnai durumlarda, parametrik değişken geçişi (`Prisma.sql` veya parametre geçişi) zorunludur, string birleştirme yapılamaz.

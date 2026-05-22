@@ -41,9 +41,9 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 - [x] JWT oturum çerezlerini `httpOnly: true`, `secure: true` (yalnızca HTTPS) ve `sameSite: "strict"` (CSRF koruması) parametreleriyle kilitle.
 
 ### 2.2. SQL Injection (SQLi) Önleme Kuralları
-- [ ] Prisma ORM sorgularının tamamında parametrik sorgu (prepared statements) standartlarını koru.
-- [ ] Projede ham sorgu (`prisma.$queryRaw`) kullanımını kesinlikle yasakla. Tüm veri tabanı işlemlerini Prisma Client API metotları ile yap.
-- [ ] Eğer ham SQL sorgusu zorunlu olursa, kesinlikle string birleştirme (concatenation) yapma; Prisma'nın `sql` şablon etiketlerini kullanarak parametrik hale getir.
+- [x] Prisma ORM sorgularının tamamında parametrik sorgu (prepared statements) standartlarını koru.
+- [x] Projede ham sorgu (`prisma.$queryRaw`) kullanımını kesinlikle yasakla. Tüm veri tabanı işlemlerini Prisma Client API metotları ile yap.
+- [x] Eğer ham SQL sorgusu zorunlu olursa, kesinlikle string birleştirme (concatenation) yapma; Prisma'nın `sql` şablon etiketlerini kullanarak parametrik hale getir.
 
 ### 2.3. Cross-Site Scripting (XSS) Önleme Kuralları
 - [ ] JSX içindeki tüm dinamik çıktıların React tarafından otomatik escape edildiğinden emin ol.
