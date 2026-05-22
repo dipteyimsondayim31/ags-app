@@ -30,6 +30,7 @@ services:
       - NEXTAUTH_SECRET=e932b7d2db8905ab9e0a0a543fde4926615b138fe9b52a926177589f81cd421f
       - AUTH_SECRET=e932b7d2db8905ab9e0a0a543fde4926615b138fe9b52a926177589f81cd421f
       - NEXTAUTH_URL=http://localhost:3000
+      - AUTH_TRUST_HOST=true
       - ADMIN_PASSWORD=admin_strong_password_here
     depends_on:
       db:
