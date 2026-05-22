@@ -20,8 +20,8 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 - [x] Obsidian Dark renk paletini (`#090a0f` arka plan, `#12131a` kart rengi, `#a78bfa` neon mor aksanı) Tailwind custom theme olarak ekle.
 
 ### 1.2. PostgreSQL Yerel Geliştirme Altyapısı
-- [ ] Proje kök dizinine yerel PostgreSQL ayağa kaldıran `docker-compose.yml` dosyasını ekle.
-- [ ] `.env.example` dosyasında veritabanı bağlantı şablonunu tanımla.
+- [x] Proje kök dizinine yerel PostgreSQL ayağa kaldıran `docker-compose.yml` dosyasını ekle.
+- [x] `.env.example` dosyasında veritabanı bağlantı şablonunu tanımla.
 
 ### 1.3. Prisma ORM ve Veritabanı Kurulumu
 - [ ] Prisma paketlerini kur ve `postgresql` provider'lı `prisma/schema.prisma` şemasını oluştur.
