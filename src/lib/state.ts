@@ -28,13 +28,24 @@ export class ProgressManager {
   }
 
   static getState(): CandidateState {
-    if (!this.isClient()) return DEFAULT_STATE;
+    if (!this.isClient()) {
+      return {
+        ...DEFAULT_STATE,
+        learnedCardIds: [],
+        reviewCardIds: [],
+      };
+    }
 
     try {
       const data = localStorage.getItem(STATE_KEY);
       if (!data) {
         // Initialize with default state
-        const initial = { ...DEFAULT_STATE, lastActive: new Date().toISOString().split("T")[0] };
+        const initial = {
+          ...DEFAULT_STATE,
+          lastActive: new Date().toISOString().split("T")[0],
+          learnedCardIds: [],
+          reviewCardIds: [],
+        };
         this.saveState(initial);
         return initial;
       }
@@ -44,13 +55,17 @@ export class ProgressManager {
         level: typeof state.level === "number" ? state.level : 1,
         streak: typeof state.streak === "number" ? state.streak : 12,
         lastActive: state.lastActive || null,
-        learnedCardIds: Array.isArray(state.learnedCardIds) ? state.learnedCardIds : [],
-        reviewCardIds: Array.isArray(state.reviewCardIds) ? state.reviewCardIds : [],
+        learnedCardIds: Array.isArray(state.learnedCardIds) ? [...state.learnedCardIds] : [],
+        reviewCardIds: Array.isArray(state.reviewCardIds) ? [...state.reviewCardIds] : [],
         studySecondsToday: typeof state.studySecondsToday === "number" ? state.studySecondsToday : 0,
       };
     } catch (e) {
       console.error("Error loading progress state:", e);
-      return DEFAULT_STATE;
+      return {
+        ...DEFAULT_STATE,
+        learnedCardIds: [],
+        reviewCardIds: [],
+      };
     }
   }
 
