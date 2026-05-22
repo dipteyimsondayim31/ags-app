@@ -71,17 +71,17 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 ## 📌 FAZ 3: Admin Kontrol Paneli ve Veri Yönetimi (CRUD)
 
 ### 3.1. Giriş Arayüzü
-- [ ] `/admin/giris` sayfasını oluştur. Minimalist, Obsidian Dark temalı, sadece şifre girdisi alan güvenli giriş formu tasarla.
-- [ ] Giriş formunu rate-limiting ve CSRF koruması ile donat.
+- [x] `/admin/giris` sayfasını oluştur. Minimalist, Obsidian Dark temalı, sadece şifre girdisi alan güvenli giriş formu tasarla.
+- [x] Giriş formunu rate-limiting ve CSRF koruması ile donat.
 
 ### 3.2. Admin Kontrol Paneli (Dashboard)
-- [ ] `/admin/page.tsx` altında kategori ve kart istatistiklerini gösteren bir özet ekranı tasarla.
-- [ ] Kategori ve Kart tablolarını/listelerini ekle.
+- [x] `/admin/page.tsx` altında kategori ve kart istatistiklerini gösteren bir özet ekranı tasarla.
+- [x] Kategori ve Kart tablolarını/listelerini ekle.
 
 ### 3.3. Kategori & Kart CRUD İşlemleri (Server Actions)
-- [ ] Kategori ve Kart ekleme, güncelleme ve silme işlevlerini gerçekleştirecek Server Action'ları (`src/app/actions/*`) oluştur.
-- [ ] Girdileri doğrulamak için **Zod** şeması tanımla.
-- [ ] Form işlemlerinde `useFormStatus` veya `useTransition` kullanarak kullanıcıya yükleniyor durumu (pending state) geri bildirimi ver.
+- [x] Kategori ve Kart ekleme, güncelleme ve silme işlevlerini gerçekleştirecek Server Action'ları (`src/app/actions/*`) oluştur.
+- [x] Girdileri doğrulamak için **Zod** şeması tanımla.
+- [x] Form işlemlerinde `useFormStatus` veya `useTransition` kullanarak kullanıcıya yükleniyor durumu (pending state) geri bildirimi ver.
 
 ---
 
