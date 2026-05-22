@@ -51,20 +51,20 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 - [x] `next.config.ts` dosyasına sıkı bir Content Security Policy (CSP) ekle: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';`
 
 ### 2.4. CSRF ve CORS Yapılandırması
-- [ ] Next.js Server Actions yerleşik `Origin` header kontrolünü aktif tut.
-- [ ] Dışarıya açık API uç noktalarında yalnızca yetkilendirilmiş kökenlere (origin) izin ver, `Access-Control-Allow-Origin: *` kullanımından kaçın.
+- [x] Next.js Server Actions yerleşik `Origin` header kontrolünü aktif tut.
+- [x] Dışarıya açık API uç noktalarında yalnızca yetkilendirilmiş kökenlere (origin) izin ver, `Access-Control-Allow-Origin: *` kullanımından kaçın.
 
 ### 2.5. Rate Limiting (Kaba Kuvvet ve DoS Saldırısı Koruması)
-- [ ] IP bazlı çalışan ve bellek (in-memory) üzerinde istek sayan `/src/lib/rate-limit.ts` mekanizmasını kodla.
-- [ ] Giriş API rotasına (veya server action'a) ardışık başarısız denemelerde `429 Too Many Requests` döndüren bu limitleyiciyi entegre et.
+- [x] IP bazlı çalışan ve bellek (in-memory) üzerinde istek sayan `/src/lib/rate-limit.ts` mekanizmasını kodla.
+- [x] Giriş API rotasına (veya server action'a) ardışık başarısız denemelerde `429 Too Many Requests` döndüren bu limitleyiciyi entegre et.
 
 ### 2.6. Hassas Veri ve Hata Yönetimi
-- [ ] Sunucu taraflı hataların stack trace (hata izi) bilgilerini istemciye (client) asla sızdırma. Hataları kullanıcıya jenerik mesajlarla (örn: "Bir hata oluştu") göster, teknik detayları sunucu loglarında tut.
-- [ ] `.env` ve hassas yapılandırma dosyalarını `.gitignore` içerisine ekle, GitHub'a sızmasını engelle.
+- [x] Sunucu taraflı hataların stack trace (hata izi) bilgilerini istemciye (client) asla sızdırma. Hataları kullanıcıya jenerik mesajlarla (örn: "Bir hata oluştu") göster, teknik detayları sunucu loglarında tut.
+- [x] `.env` ve hassas yapılandırma dosyalarını `.gitignore` içerisine ekle, GitHub'a sızmasını engelle.
 
 ### 2.7. Rota Yetkilendirmesi (Broken Function Level Authorization)
-- [ ] `src/middleware.ts` dosyasını oluştur.
-- [ ] `/admin` altındaki tüm rotaları (giriş sayfası hariç) koruma altına al ve session'ı sunucu tarafında doğrulamadan hiçbir admin action'ının çalışmasına izin verme.
+- [x] `src/proxy.ts` dosyasını oluştur (Next.js v16).
+- [x] `/admin` altındaki tüm rotaları (giriş sayfası hariç) koruma altına al ve session'ı sunucu tarafında doğrulamadan hiçbir admin action'ının çalışmasına izin verme.
 
 ---
 
