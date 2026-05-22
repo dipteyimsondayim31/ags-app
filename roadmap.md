@@ -88,19 +88,19 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 ## 📌 FAZ 4: Aday Arayüzü ve Akıllı Dashboard Geliştirme
 
 ### 4.1. Mobil Uyumlu Root Düzeni
-- [ ] `src/app/page.tsx` dosyasını görseldeki mobil odaklı tasarıma uygun şekilde kodla (max-w-md, overflow-x-hidden).
-- [ ] `BottomNav.tsx` (Alt Navigasyon Çubuğu: Ana Sayfa, Ekle/Çalış, İstatistikler) bileşenini yerleştir.
+- [x] `src/app/page.tsx` dosyasını görseldeki mobil odaklı tasarıma uygun şekilde kodla (max-w-md, overflow-x-hidden).
+- [x] `BottomNav.tsx` (Alt Navigasyon Çubuğu: Ana Sayfa, Ekle/Çalış, İstatistikler) bileşenini yerleştir.
 
 ### 4.2. Güvenli İlerleme ve Senkronizasyon (`state.ts`)
-- [ ] `src/lib/state.ts` içinde `localStorage` ile senkronize çalışan aday ilerleme durumunu yöneten JS sınıfını/fonksiyonlarını yaz:
+- [x] `src/lib/state.ts` içinde `localStorage` ile senkronize çalışan aday ilerleme durumunu yöneten JS sınıfını/fonksiyonlarını yaz:
   * Mevcut EXP, Seviye, Günlük Görevler.
   * Kart çalışıldığında EXP ekleme ve Seviye atlama (Level Up) mantığı.
   * **Hata Önleme (Pruning):** Veritabanından çekilen kart listesinde artık var olmayan (admin tarafından silinmiş) kart ID'lerini `localStorage` geçmişinden otomatik olarak temizleyen mantığı kur.
-- [ ] Dashboard üzerinde Seviye ve EXP barlarını görselleştir.
+- [x] Dashboard üzerinde Seviye ve EXP barlarını görselleştir.
 
 ### 4.3. Dairesel İlerleme ve Kart Durumları
-- [ ] Görseldeki `%68` dairesel ilerleme grafiğini SVG tabanlı `CircularProgress.tsx` olarak kodla.
-- [ ] Toplam öğrenilen, tekrar edilecek ve toplam kart istatistik panellerini Obsidian tarzı tasarla.
+- [x] Görseldeki `%68` dairesel ilerleme grafiğini SVG tabanlı `CircularProgress.tsx` olarak kodla.
+- [x] Toplam öğrenilen, tekrar edilecek ve toplam kart istatistik panellerini Obsidian tarzı tasarla.
 
 ---
 
