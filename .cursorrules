@@ -1,0 +1,36 @@
+# AGS Bilgi Kartı Uygulaması - Kodlama ve Geliştirme Kuralları (.cursorrules)
+
+Bu dosya, projenin geliştirilmesi sırasında uyulması gereken teknik ve mimari kuralları tanımlar.
+
+## 1. Genel Kurallar
+*   **Dil:** Arayüz, API hata mesajları, loglar ve veri tabanı başlangıç verileri (seed) dahil olmak üzere tüm kullanıcıya açık kısımlar **tamamen Türkçe** olacaktır.
+*   **Mobil Öncelikli:** Tasarım öncelikle akıllı telefon tarayıcıları (390x844px ve benzeri en-boy oranları) için optimize edilecek, yatay kaydırma (overflow-x) kesinlikle olmayacaktır.
+*   **Erişilebilirlik (A11y):** Form elemanlarında `label` kullanımı, butonlarda açıklayıcı `aria-label` kullanımı zorunludur.
+
+## 2. Next.js & React Kuralları
+*   **App Router:** Tüm sayfalar ve API'ler `src/app` dizininde yer alacaktır.
+*   **Server vs. Client Components:**
+    *   Bileşenler varsayılan olarak Server Component olmalıdır.
+    *   Yalnızca kullanıcı etkileşimi (click, hover, state, animasyon vb.) gerektiren yerlerde `'use client'` direktifi kullanılmalıdır.
+*   **Server Actions:** Veritabanı yazma/güncelleme/silme işlemleri (CRUD) için API rotaları yerine Next.js Server Actions tercih edilecektir.
+*   **Veri Getirme:** Server Component'lerde veriler doğrudan `prisma` kullanılarak çekilecektir.
+
+## 3. Stil & Tasarım Kuralları (TailwindCSS)
+*   **Renk Paleti (Obsidian Dark & Neon Glow):**
+    *   Ana Arka Plan: `bg-[#090a0f]`
+    *   Kart Arka Planları (Glassmorphic): `bg-[#12131a]/80 backdrop-blur-md border border-white/5`
+    *   Neon Mor Aksan: `text-[#a78bfa]`, `bg-[#a78bfa]`, `shadow-[#a78bfa]/20`
+    *   İkincil Gri: `text-gray-400`
+*   **Yazı Tipi:** `Geist` veya `Outfit` temiz sans-serif fontları.
+*   **Etkileşim:** Butonlarda ve tıklanabilir kartlarda `active:scale-95 transition-all duration-200` efekti kullanılmalıdır.
+
+## 4. Güvenlik Kuralları
+*   **Kimlik Doğrulama (Auth):** Admin rotaları (`/admin/*`), `/src/middleware.ts` üzerinden NextAuth session kontrolü ile korunacaktır. Giriş yapılmamışsa doğrudan `/admin/giris` sayfasına yönlendirilecektir.
+*   **Şifre Güvenliği:** Admin şifresi asla veritabanında düz metin olarak saklanamaz. Giriş doğrulaması için **Argon2** veya **Bcrypt** kullanılmalıdır.
+*   **Veri Doğrulama (Zod):** Admin panelinden gelen tüm girdiler ve API istekleri Zod şemaları ile doğrulanmalıdır.
+*   **Rate Limiting:** `/api/auth` ve `/admin/giris` rotalarında brute-force saldırılarını engellemek için istek sınırlaması aktif olmalıdır.
+*   **Çerezler:** JWT oturum çerezleri `httpOnly: true`, `secure: true` ve `sameSite: "strict"` olarak ayarlanmalıdır.
+
+## 5. Veritabanı (Prisma) Kuralları
+*   İlişkili tablolar silinirken veri bütünlüğü için `onDelete: Cascade` kullanılmalıdır.
+*   Sema değişikliklerinden sonra `npx prisma generate` ve `npx prisma db push` (veya migrate) çalıştırılmalıdır.
