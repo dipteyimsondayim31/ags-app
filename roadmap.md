@@ -46,9 +46,9 @@ Bu yol haritası, yazılım mimarisi standartlarına (veri bütünlüğü, güve
 - [x] Eğer ham SQL sorgusu zorunlu olursa, kesinlikle string birleştirme (concatenation) yapma; Prisma'nın `sql` şablon etiketlerini kullanarak parametrik hale getir.
 
 ### 2.3. Cross-Site Scripting (XSS) Önleme Kuralları
-- [ ] JSX içindeki tüm dinamik çıktıların React tarafından otomatik escape edildiğinden emin ol.
-- [ ] Uygulama genelinde `dangerouslySetInnerHTML` kullanımını yasakla. Kullanılması zorunlu olan yerlerde girdiyi kesinlikle `isomorphic-dompurify` ile sanitize et.
-- [ ] `next.config.js` dosyasına sıkı bir Content Security Policy (CSP) ekle: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';`
+- [x] JSX içindeki tüm dinamik çıktıların React tarafından otomatik escape edildiğinden emin ol.
+- [x] Uygulama genelinde `dangerouslySetInnerHTML` kullanımını yasakla. Kullanılması zorunlu olan yerlerde girdiyi kesinlikle `isomorphic-dompurify` ile sanitize et.
+- [x] `next.config.ts` dosyasına sıkı bir Content Security Policy (CSP) ekle: `default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline';`
 
 ### 2.4. CSRF ve CORS Yapılandırması
 - [ ] Next.js Server Actions yerleşik `Origin` header kontrolünü aktif tut.

@@ -30,6 +30,7 @@ Bu dosya, projenin geliştirilmesi sırasında uyulması gereken teknik ve mimar
 *   **Veri Doğrulama (Zod):** Admin panelinden gelen tüm girdiler ve API istekleri Zod şemaları ile doğrulanmalıdır.
 *   **Rate Limiting:** `/api/auth` ve `/admin/giris` rotalarında brute-force saldırılarını engellemek için istek sınırlaması aktif olmalıdır.
 *   **Çerezler:** JWT oturum çerezleri `httpOnly: true`, `secure: true` ve `sameSite: "strict"` olarak ayarlanmalıdır.
+*   **Cross-Site Scripting (XSS) Önleme:** JSX içindeki tüm dinamik çıktıların otomatik escape edildiğinden emin olunmalı, `dangerouslySetInnerHTML` kullanımı kesinlikle yasaklanmalı (istisnai ve zorunlu hallerde girdi kesinlikle `isomorphic-dompurify` ile sanitize edilmeli) ve `next.config.ts` dosyasına sıkı CSP başlıkları eklenmelidir.
 
 ## 5. Veritabanı (Prisma) Kuralları
 *   İlişkili tablolar silinirken veri bütünlüğü için `onDelete: Cascade` kullanılmalıdır.
